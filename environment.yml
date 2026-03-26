@@ -1,0 +1,14 @@
+name: cmdo-ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - notebook
+  - pip
+  - pip:
+      - tensorflow>=2.16,<2.22
+      - keras>=3.0
