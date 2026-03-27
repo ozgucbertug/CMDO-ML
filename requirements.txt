@@ -1,0 +1,7 @@
+pandas
+scikit-learn
+matplotlib
+seaborn
+notebook
+tensorflow>=2.16,<2.22
+keras>=3.0
