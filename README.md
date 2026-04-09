@@ -2,6 +2,14 @@
 
 Teaching repository for the **Computational Methods for Design Optimization** ML module.
 
+## Repository Layout
+
+- `classical_examples/`: self-contained reference notebooks using public datasets
+- `inclass_examples/notebooks/`: course notebooks for the CMDO exercises
+- `inclass_examples/data/scalar/`: scalar CSV datasets
+- `inclass_examples/artifacts/`: saved model artifacts (model weights, scalars, metadata)
+- `gh_scripts/`: Grasshopper scripts
+
 ## Environment Setup
 
 ### Conda
@@ -13,7 +21,7 @@ conda env create -f environment.yml
 conda activate cmdo-ml
 ```
 
-If the environment already exists and you want to refresh it:
+If the environment already exists:
 
 ```bash
 conda env update -f environment.yml --prune
@@ -22,13 +30,13 @@ conda env update -f environment.yml --prune
 **Alternative:** create a conda env, then install from `requirements.txt`:
 
 ```bash
-conda create -n cmdo-ml python=3.11 -y
+conda create -n cmdo-ml python=3.9.10 -y
 conda activate cmdo-ml
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-#### Windows runtime notes:
+## Windows Notes
 
 1. Run conda commands from **Anaconda Prompt** or a terminal where conda is initialized.
 2. If `conda activate cmdo-ml` fails in PowerShell, run:
