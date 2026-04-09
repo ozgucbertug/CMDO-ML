@@ -1,0 +1,18 @@
+{
+  "source_csv": "..\\data\\scalar\\global_features_dataset.csv",
+  "target_col": "max_disp",
+  "feature_cols": [
+    "x_00",
+    "x_01",
+    "x_02"
+  ],
+  "seed": 42,
+  "test_metrics": {
+    "mlp_mae": 2.1562516519021404,
+    "mlp_rmse": 2.9241889553429674,
+    "mlp_r2": 0.996397324568731,
+    "linear_mae": 39.83407147642248,
+    "linear_rmse": 46.105428382065035,
+    "linear_r2": 0.10439110948008157
+  }
+}
