@@ -1,0 +1,22 @@
+{
+  "source_csv": "..\\data\\image\\global_features\\global_features_scalar_dataset.csv",
+  "image_dir": "..\\data\\image\\global_features",
+  "target_col": "max_disp",
+  "index_col": "index",
+  "image_shape": [
+    32,
+    32,
+    1
+  ],
+  "normalization": "divide_by_255",
+  "baseline": "Ridge(alpha=1.0) on flattened pixels",
+  "seed": 42,
+  "test_metrics": {
+    "cnn_mae": 1.7953286170959473,
+    "cnn_rmse": 2.5511281490325928,
+    "cnn_r2": 0.9972579479217529,
+    "ridge_mae": 42.86980438232422,
+    "ridge_rmse": 48.75072479248047,
+    "ridge_r2": -0.0013279914855957031
+  }
+}
