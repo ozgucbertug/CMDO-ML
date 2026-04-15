@@ -36,27 +36,6 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Windows Notes
-
-1. Run conda commands from **Anaconda Prompt** or a terminal where conda is initialized.
-2. If `conda activate cmdo-ml` fails in PowerShell, run:
-
-```powershell
-conda init powershell
-```
-
-3. Close and reopen the terminal, then run:
-
-```powershell
-conda activate cmdo-ml
-```
-
-If you use Command Prompt (`cmd`) instead of PowerShell, initialize once with:
-
-```bat
-conda init cmd.exe
-```
-
 ### VS Code Setup
 
 1. Open this project folder in VS Code:
@@ -69,3 +48,25 @@ conda init cmd.exe
 4. Run `Python: Select Interpreter` and choose `cmdo-ml`.
 5. Open any `.ipynb` notebook and select the `cmdo-ml` kernel when prompted.
    - You can also use the kernel picker in the notebook toolbar (top-right).
+
+## Troubleshooting
+
+### Windows ImportError
+
+On some Windows 11 machines, importing libraries may fail to import with an error like:
+
+```text
+ImportError: DLL load failed while importing ...:
+An Application Control policy has blocked this file.
+```
+
+If you see this, a common cause is **Smart App Control** blocking native Python extension files (`.pyd`) inside the conda environment.
+
+To check:
+
+1. Open **Windows Security**.
+2. Go to **App & browser control**.
+3. Open **Smart App Control** and check whether it is turned on.
+
+If Smart App Control is the cause, turning it off may allow the environment to work correctly.
+
