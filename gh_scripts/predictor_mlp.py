@@ -6,24 +6,24 @@
 # MLP REGRESSION PREDICTOR
 # ----------------------------------------------------------------
 # Loads the saved `.keras` regressor, scaler, and metadata from
-# `inclass_examples/artifacts/mlp_regression`, then predicts
-# `max_disp` for one Grasshopper sample at a time.
+# the provided artifacts folder, then predicts `max_disp` for one
+# Grasshopper sample at a time.
 #
 # HOW IT WORKS
-#   1. Load model/scaler/metadata once and cache them in sc.sticky
+#   1. Load model, scaler, and metadata once and cache them in sc.sticky
 #   2. Check that the incoming X values match the saved feature count
 #   3. Scale X with the saved scaler
 #   4. Run the Keras model and return the predicted max displacement
 #
 # INPUTS
-#   XVals        (list[float])      - Feature values for one sample
-#   XNames       (list[str]/None)   - Optional feature names for XVals
-#   ArtifactsDir (str)              - Folder containing the saved artifacts
-#   Run          (bool)             - Trigger prediction
-#   Reset        (bool)             - Clear cached artifacts and reload next run
+#   XVals        (list[float])    - Feature values for one sample
+#   XNames       (list[str]/None) - Optional feature names for XVals
+#   ArtifactsDir (str)            - Folder containing the saved artifacts
+#   Run          (bool)           - Trigger prediction
+#   Reset        (bool)           - Clear cached artifacts and reload next run
 #
 # OUTPUTS
-#   YPred        (float/None)  - Predicted max displacement
+#   YPred        (float/None)     - Predicted max displacement
 #
 # Ozguc Bertug Capunaman - CMDO - Spring 2026
 # ================================================================
@@ -38,6 +38,8 @@ import scriptcontext as sc
 from tensorflow import keras
 
 
+# --- Helpers ---------------------------------------------------------
+
 def as_list(v):
     """Ensure v is a plain Python list (handles None, scalars, tuples)."""
     if v is None:
@@ -49,6 +51,8 @@ def as_list(v):
     except TypeError:
         return [v]
 
+
+# --- Load / cache artifacts -----------------------------------------
 
 def load_bundle(artifacts_dir):
     """Load model, scaler, and metadata from disk."""
@@ -100,6 +104,8 @@ def get_bundle():
     return bundle
 
 
+# --- Build feature input --------------------------------------------
+
 def build_feature_input(x_vals, x_names, feature_cols):
     """Return one feature row, optionally aligned by incoming feature names."""
     if len(x_vals) != len(feature_cols):
@@ -128,7 +134,12 @@ def build_feature_input(x_vals, x_names, feature_cols):
     return pd.DataFrame([ordered_vals], columns=feature_cols)
 
 
+# --- Default outputs -------------------------------------------------
+
 YPred = None
+
+
+# --- Main logic ------------------------------------------------------
 
 try:
     bundle = get_bundle()
